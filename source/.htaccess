@@ -14,6 +14,8 @@ Redirect 301 /en/knowledge-base.html /en/troubleshooting-faq.html
 
 RewriteEngine on
 
+RewriteCond %{HTTPS} on
+RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Rewrite help.openshift.com to developers.openshift.com
 RewriteCond %{HTTP_HOST} ^help.openshift.com$
