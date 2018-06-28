@@ -55,7 +55,7 @@ helpers do
 
   def build_navtree(root = nil)
     html = ""
-    if root == nil 
+    if root == nil
       root = navtree_yaml = YAML.load_file('data/tree.yml')
     end
     root.each_pair do |folder,contents|
@@ -64,7 +64,7 @@ helpers do
       else
         extensionlessPath = sitemap.extensionless_path(folder)
       end
-      
+
         if extensionlessPath.end_with? ".html"
           resource = sitemap.find_resource_by_path(extensionlessPath)
           if resource.nil?
@@ -131,7 +131,7 @@ end
 # Build-specific configuration
 configure :build do
   config.ignored_sitemap_matchers[:source_dotfiles] = proc { |file|
-    file =~ %r{/\.} && file !~ %r{/\.(openshift|htaccess|htpasswd|nojekyll|git)}
+    file =~ %r{/\.} && file !~ %r{/\.(s2i|openshift|htaccess|htpasswd|nojekyll|git)}
   }
 
   activate :minify_css
